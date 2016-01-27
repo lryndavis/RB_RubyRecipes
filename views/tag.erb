@@ -2,6 +2,14 @@
 
 <h2>All recipes matching <%= @tag.category %>:</h2>
 
+<ul>
+  <% @tag.recipes.each do |recipe| %>
+   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
+  <% end %>
+</ul>
+
+
+<br>
 <form class="form-inline" form action="/tags/<%= @tag.id() %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" class="btn btn-danger">Delete this Tag</button>
