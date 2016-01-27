@@ -49,3 +49,14 @@ post('/tags') do
   Tag.create({category: category})
   redirect ('/')
 end
+
+get('/tags/:id') do
+  @tag = Tag.find(params.fetch("id").to_i)
+  erb(:tag)
+end
+
+delete('/tags/:id/delete') do
+  @tag = Tag.find(params.fetch("id").to_i)
+  @tag.delete
+  redirect ('/')
+end

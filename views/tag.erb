@@ -1,1 +1,8 @@
-<h1>Tag</h1>
+ <h1><%= @tag.category %></h1>
+
+<h2>All recipes matching <%= @tag.category %>:</h2>
+
+<form class="form-inline" form action="/tags/<%= @tag.id() %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete this Tag</button>
+</form>
