@@ -25,10 +25,16 @@ end
 patch('/recipes/:id') do
   instructions = params.fetch('instructions')
   @tags = Tag.all
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  @recipe.update({:instructions => instructions})
+  erb(:recipe)
+end
+
+patch('/recipes/:id/tags') do
+  @tags = Tag.all
   @tag = Tag.find(params.fetch("tag_id").to_i)
   @recipe = Recipe.find(params.fetch("id").to_i)
   @recipe.tags.push(@tag)
-  @recipe.update({:instructions => instructions})
   erb(:recipe)
 end
 
