@@ -1,25 +1,26 @@
-<h1>Grandma Bayou's Killer Kajun Surprise Book</h1>
+<div class="container">
+  <h1>Grandma Bayou's Killer Kajun Surprise Book</h1>
 
-<h1>Recipe list:</h1>
-<ul>
-  <% @recipes.each do |recipe| %>
-   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
-  <% end %>
-</ul>
+  <h1>Recipe list:</h1>
+  <ul>
+    <% @recipes.each do |recipe| %>
+    <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
+     <% end %>
+   </ul>
 
-<h3>Add a recipe</h3>
 
 <div class="container-fluid">
+  <form class="form-inline">
   <form action="/recipes" method="post">
     <div class="form-group">
       <label>Add a Recipe:</label>
-      <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Ajouter La Recette">
+      <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Your Recipe">
     </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>
 </div>
 
-<h3>Add a tag</h3>
+<h1>Search by Tags:</h1>
 
 <ul>
   <% @tags.each do |tag| %>
@@ -28,11 +29,13 @@
 </ul>
 
 <div class="container-fluid">
+  <form class="form-inline">
   <form action="/tags" method="post">
     <div class="form-group">
       <label>Add a Tag:</label>
-      <input type="text" class="form-control" id="category" name="category">
+      <input type="text" class="form-control" id="category" name="category" placeholder="Your Custom Tag">
     </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>
+</div>
 </div>
