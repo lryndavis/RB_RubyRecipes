@@ -4,7 +4,7 @@
 
 <ul>
   <% @tag.recipes.each do |recipe| %>
-   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
+   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></li>
   <% end %>
 </ul>
 
