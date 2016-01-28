@@ -17,12 +17,12 @@
 </form>
 
 <br>
-<form class="" action="/tags/<%= @tag.id %>/update" method="post">
+<form class="form-inline" action="/tags/<%= @tag.id %>/update" method="post">
   <input type="hidden" value="patch" name="_method">
-  <input type="text" id="category" name="category">
-  <button type="submit">Update Tag</button>
+  <input type="text" class="form-control" id="category" name="category">
+  <button type="submit" class="btn btn-default">Update Tag</button>
 </form>
 
-
+<br>
 <a href="/">HOME</a>
 </div>
