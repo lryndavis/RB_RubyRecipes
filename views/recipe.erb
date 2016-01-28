@@ -21,8 +21,7 @@
 </form>
 <br>
 
-<form class="form-inline">
-  <form action="/recipes/<%= @recipe.id %>/tags" method="post">
+  <form action="/recipes/<%= @recipe.id %>/tags" method="post" form class="form-inline">
     <input name="_method" type="hidden" value="patch">
     <select id="tag_id" name="tag_id" class="form-control">
       <ul>
