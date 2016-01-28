@@ -61,3 +61,8 @@ delete('/tags/:id/delete') do
   @tag.delete
   redirect ('/')
 end
+
+patch('/tags/:id/update') do
+  Tag.find(params[:id].to_i).update({category: params[:category]})
+  redirect "tags/#{params[:id].to_i}"
+end

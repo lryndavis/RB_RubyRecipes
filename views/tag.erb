@@ -5,16 +5,24 @@
 
 <ul>
   <% @tag.recipes.each do |recipe| %>
-   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></li>
+   <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
   <% end %>
 </ul>
 
-
 <br>
+
 <form class="form-inline" form action="/tags/<%= @tag.id() %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" class="btn btn-danger">Delete this Tag</button>
 </form>
+
+<br>
+<form class="" action="/tags/<%= @tag.id %>/update" method="post">
+  <input type="hidden" value="patch" name="_method">
+  <input type="text" id="category" name="category">
+  <button type="submit">Update Tag</button>
+</form>
+
 
 <a href="/">HOME</a>
 </div>
