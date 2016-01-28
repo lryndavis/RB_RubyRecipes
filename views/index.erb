@@ -36,4 +36,13 @@
     <button type="submit" class="btn btn-default">Add</button>
   </form>
 </div>
+
+
+<h1>Search by Ingredients:</h1>
+
+<ul>
+  <% @ingredients.each do |ingredient| %>
+   <li><a href="/ingredients/<%= ingredient.id %>"><%= ingredient.ingredient_name %></a></li>
+  <% end %>
+</ul>
 </div>
