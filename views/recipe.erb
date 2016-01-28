@@ -18,11 +18,18 @@
 </form>
 
 <h3>Ingredients:</h3>
+
+<ul>
+  <% @recipe.ingredients.each do |ingredient| %>
+   <li><%= ingredient.ingredient_name %></li>
+  <% end %>
+</ul>
+
 <div class="container-fluid">
-  <form class="form-inline" action="" method="post">
+  <form class="form-inline" action="/recipes/<%= @recipe.id %>/ingredients" method="post">
     <div class="form-group">
       <label>Add an Ingredient:</label>
-      <input type="text" class="form-control" id="" name="" placeholder="ex: cheese">
+      <input type="text" class="form-control" id="ingredient_name" name="ingredient_name" placeholder="ex: cheese">
     </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>

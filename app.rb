@@ -66,3 +66,13 @@ patch('/tags/:id/update') do
   Tag.find(params[:id].to_i).update({category: params[:category]})
   redirect "tags/#{params[:id].to_i}"
 end
+
+post('/recipes/:id/ingredients') do
+  @tags = Tag.all
+  ingredient_name = params.fetch('ingredient_name')
+  @ingredient = Ingredient.create({ingredient_name: ingredient_name})
+  @ingredients = Ingredient.all
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  @recipe.ingredients.push(@ingredient)
+  erb(:recipe)
+end
