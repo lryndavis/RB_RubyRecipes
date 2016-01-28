@@ -64,4 +64,61 @@ describe('ability to add a new recipe to the application', {:type => :feature}) 
     end
   end
 
-  
+  describe('ability to delete recipes', {:type => :feature}) do
+    it('allows the user to delete individual recipes') do
+      visit('/')
+      fill_in('recipe_name', :with => "Tomato Soup")
+      click_button('Add Recipe')
+      expect(page).to have_content('Tomato Soup')
+      click_link('Tomato Soup')
+      click_button('Delete this Recipe')
+      expect(page).not_to(have_content('Tomato Soup'))
+    end
+  end
+
+  describe('ability to update tags', {:type => :feature}) do
+    it('allows the user to update tag names') do
+      visit('/')
+      fill_in('category', :with => "Vegan")
+      click_button('Add Tag')
+      expect(page).to have_content('Vegan')
+      click_link('Vegan')
+      fill_in('category', :with => "Vegan Friendly")
+      click_button('Update Tag')
+      expect(page).to have_content('Vegan Friendly')
+    end
+  end
+
+  describe('ability to delete tags', {:type => :feature}) do
+    it('allows the user to delete individual tags') do
+      visit('/')
+      fill_in('category', :with => "Vegan")
+      click_button('Add Tag')
+      expect(page).to have_content('Vegan')
+      click_link('Vegan')
+      click_button('Delete this Tag')
+      expect(page).not_to(have_content('Vegan'))
+    end
+  end
+
+  describe('ability to search recipes by tag', {:type => :feature}) do
+    it('allows the user to search for recipes based on their corresponding tags') do
+      visit('/')
+      fill_in('category', :with => "Vegan")
+      click_button('Add Tag')
+      expect(page).to have_content('Vegan')
+      visit('/')
+      fill_in('recipe_name', :with => "Tomato Soup")
+      click_button('Add Recipe')
+      expect(page).to have_content('Tomato Soup')
+      click_link('Tomato Soup', :match => :first)
+      expect(page).to have_content('Add Tags:')
+      select "Vegan", :from => "tag_id"
+      click_button('Add Tag')
+      expect(page).to have_content('Vegan')
+      click_link('HOME')
+      expect(page).to have_content('Search by Tags:')
+      click_link('Vegan')
+      expect(page).to have_content('Tomato Soup')
+    end
+  end
