@@ -8,9 +8,6 @@
    <li><%= @recipe.instructions %></a></li>
 </ul>
 
-
-
-
 <form action="/recipes/<%= @recipe.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
     <div class="form-group">
@@ -19,6 +16,18 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+<h3>Ingredients:</h3>
+<div class="container-fluid">
+  <form class="form-inline" action="" method="post">
+    <div class="form-group">
+      <label>Add an Ingredient:</label>
+      <input type="text" class="form-control" id="" name="" placeholder="ex: cheese">
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+  </form>
+</div>
+
 <br>
 
   <form action="/recipes/<%= @recipe.id %>/tags" method="post" form class="form-inline">
